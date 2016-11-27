@@ -2,9 +2,9 @@
 A control used to display power value.
 ScreenShot
 ====
-![image](https://github.com/jiajunhui/BatterIcon/raw/master/screenshot/screen_shot_01.png)
-![image](https://github.com/jiajunhui/BatterIcon/raw/master/screenshot/screen_shot_02.png)
-![image](https://github.com/jiajunhui/BatterIcon/raw/master/screenshot/screen_shot_03.png)
+![image](https://github.com/jiajunhui/BatteryIcon/raw/master/screenshot/screen_shot_01.png)
+![image](https://github.com/jiajunhui/BatteryIcon/raw/master/screenshot/screen_shot_02.png)
+![image](https://github.com/jiajunhui/BatteryIcon/raw/master/screenshot/screen_shot_03.png)
 Use
 ====
 ```xml
