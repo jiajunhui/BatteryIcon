@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/toolbar_background"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ImageView
+            android:id="@+id/iv_navigation"
+            android:layout_width="@dimen/toolbar_height"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_back_white"
+            android:scaleType="centerInside"/>
+
+        <TextView
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/toolbar_title_margin"
+            android:layout_marginRight="@dimen/toolbar_title_margin"
+            android:drawablePadding="10dp"
+            android:singleLine="true"
+            android:textSize="@dimen/toolbar_text_size"
+            android:text=""
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="@dimen/toolbar_height"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/menu_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:maxLength="8"
+            android:gravity="center"
+            android:textSize="@dimen/toolbar_menu_text_size"
+            android:textColor="@color/toolbar_text"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
