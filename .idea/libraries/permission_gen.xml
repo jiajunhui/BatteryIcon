@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="permission_gen">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/xui/libs/permission_gen.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

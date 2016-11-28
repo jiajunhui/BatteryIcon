@@ -49,6 +49,14 @@ public class BatteryView extends View {
 
     private int mBodyWidth;
 
+    private final int DEFAULT_LOW_POWER_VALUE = 20;
+    private int mLowPowerValue = DEFAULT_LOW_POWER_VALUE;
+
+    private boolean isLowPowerWarn = true;
+
+    private final int DEFAULT_LOW_POWER_WARN_PROGRESS_COLOR = Color.RED;
+    private int mLowPowerProgressColor = DEFAULT_LOW_POWER_WARN_PROGRESS_COLOR;
+
     public BatteryView(Context context) {
         this(context,null);
     }
@@ -118,6 +126,58 @@ public class BatteryView extends View {
         drawProgress(canvas);
     }
 
+    public int getLowPowerValue() {
+        return mLowPowerValue;
+    }
+
+    /**
+     * 设置低电量预警值
+     * @param mLowPowerValue
+     */
+    public void setLowPowerValue(int mLowPowerValue) {
+        boolean needInvalidate = this.mLowPowerValue!=mLowPowerValue && mProgress<=mLowPowerValue;
+        this.mLowPowerValue = mLowPowerValue;
+        if(needInvalidate){
+            invalidate();
+        }
+    }
+
+    public int getLowPowerProgressColor() {
+        return mLowPowerProgressColor;
+    }
+
+    /**
+     * 设置低电量预警进度颜色
+     * @param mLowPowerProgressColor
+     */
+    public void setLowPowerProgressColor(int mLowPowerProgressColor) {
+        boolean needInvalidate = this.mLowPowerProgressColor!=mLowPowerProgressColor && mProgress<=mLowPowerValue;
+        this.mLowPowerProgressColor = mLowPowerProgressColor;
+        if(needInvalidate){
+            invalidate();
+        }
+    }
+
+    public boolean isLowPowerWarn() {
+        return isLowPowerWarn;
+    }
+
+    /**
+     * 是否开启低电量预警
+     * @param lowPowerWarn
+     */
+    public void setLowPowerWarn(boolean lowPowerWarn) {
+        boolean needInvalidate = this.isLowPowerWarn!=lowPowerWarn && mProgress<=mLowPowerValue;
+        isLowPowerWarn = lowPowerWarn;
+        if(needInvalidate){
+            invalidate();
+        }
+    }
+
+    /**
+     * 设置电池电量值
+     * @param progress
+     */
     public void setBatteryValue(int progress){
         boolean needInvalidate = mProgress != progress;
         this.mProgress = progress;
@@ -126,6 +186,10 @@ public class BatteryView extends View {
         }
     }
 
+    /**
+     * 设置电量显示类型。
+     * @param showType SHOW_TYPE_FILL or SHOW_TYPE_NUMBER
+     */
     public void setShowType(int showType){
         boolean needInvalidate = this.mShowType!=showType;
         this.mShowType = showType;
@@ -134,6 +198,10 @@ public class BatteryView extends View {
         }
     }
 
+    /**
+     * 设置电池正极朝向
+     * @param headOrientation HEAD_ORIENTATION_LEFT or HEAD_ORIENTATION_RIGHT
+     */
     public void setHeadOrientation(int headOrientation){
         boolean needInvalidate = this.mHeadOrientation!=headOrientation;
         this.mHeadOrientation = headOrientation;
@@ -184,6 +252,11 @@ public class BatteryView extends View {
     }
 
     private void drawProgress(Canvas canvas) {
+        if(mProgress<=mLowPowerValue && isLowPowerWarn){
+            mProgressPaint.setColor(mLowPowerProgressColor);
+        }else{
+            mProgressPaint.setColor(mProgressColor);
+        }
         if(mShowType == SHOW_TYPE_FILL){
             int[] rectF = new int[4];
             int progressW = getProgressWidth(mProgress);
